@@ -1,5 +1,8 @@
-"""
-Desafio de Algoritmos e Lógica de Programação:
+"""Menu interativo do sistema de gestão de peças, qualidade e armazenamento.
+
+Execução: `python3 src/main.py` a partir da raiz do projeto.
+
+Sobre o Desafio:
 
 Você foi convidado por uma empresa do setor industrial para prototipar uma solução de
 automação digital que auxilie no controle de produção e qualidade das peças fabricadas
@@ -21,6 +24,14 @@ o Total de peças reprovadas e o motivo da reprovação
 o Quantidade de caixas utilizadas
 """
 
+from armazenamento import GerenciadorCaixas
+from cadastro import cadastrar_peca
+from caixas import listar_caixas_fechadas
+from listagem import listar_pecas
+from models import Peca
+from relatorios import gerar_relatorio
+from remocao import remover_peca
+
 MENU = """
 ===== GESTÃO DE PEÇAS, QUALIDADE E ARMAZENAMENTO =====
 1. Cadastrar nova peça
@@ -31,31 +42,26 @@ MENU = """
 0. Sair
 """
 
-def ler_float(mensagem: str) -> float:
-    """Lê um número decimal do usuário, repetindo a pergunta em caso de erro."""
-    while True:
-        valor = input(mensagem).strip().replace(",", ".")
-        try:
-            return float(valor)
-        except ValueError:
-            print("Valor inválido. Digite um número (ex.: 98.5).")
-
 
 def main() -> None:
+    pecas_aprovadas: list[Peca] = []
+    pecas_reprovadas: list[Peca] = []
+    gerenciador = GerenciadorCaixas(capacidade=10)
+
     while True:
         print(MENU)
         opcao = input("Escolha uma opção: ").strip()
 
         if opcao == "1":
-            print("Cadastrar nova peça")
+            cadastrar_peca(pecas_aprovadas, pecas_reprovadas, gerenciador)
         elif opcao == "2":
-            print("Listar peças aprovadas/reprovadas")
+            listar_pecas(pecas_aprovadas, pecas_reprovadas)
         elif opcao == "3":
-            print("Remover peça cadastrada")
+            remover_peca(pecas_aprovadas, pecas_reprovadas, gerenciador)
         elif opcao == "4":
-            print("Listar caixas fechadas")
+            listar_caixas_fechadas(gerenciador)
         elif opcao == "5":
-            print("Gerar relatório final")
+            print(gerar_relatorio(pecas_aprovadas, pecas_reprovadas, gerenciador))
         elif opcao == "0":
             print("Encerrando o sistema. Até logo!")
             break
@@ -64,4 +70,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()            
+    main()
