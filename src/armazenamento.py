@@ -1,0 +1,1 @@
+"""Gerenciamento das caixas de armazenamento de peças aprovadas."""
