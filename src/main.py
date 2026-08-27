@@ -39,3 +39,29 @@ def ler_float(mensagem: str) -> float:
             return float(valor)
         except ValueError:
             print("Valor inválido. Digite um número (ex.: 98.5).")
+
+
+def main() -> None:
+    while True:
+        print(MENU)
+        opcao = input("Escolha uma opção: ").strip()
+
+        if opcao == "1":
+            print("Cadastrar nova peça")
+        elif opcao == "2":
+            print("Listar peças aprovadas/reprovadas")
+        elif opcao == "3":
+            print("Remover peça cadastrada")
+        elif opcao == "4":
+            print("Listar caixas fechadas")
+        elif opcao == "5":
+            print("Gerar relatório final")
+        elif opcao == "0":
+            print("Encerrando o sistema. Até logo!")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+
+if __name__ == "__main__":
+    main()            
