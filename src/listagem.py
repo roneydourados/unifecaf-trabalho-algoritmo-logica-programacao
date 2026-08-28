@@ -12,10 +12,12 @@ def listar_pecas(pecas_aprovadas: list[Peca], pecas_reprovadas: list[Peca]) -> N
         print("Nenhuma peça aprovada até o momento.")
     for peca in pecas_aprovadas:
         print(peca)
+        print("\n")
 
     print("\n-- Peças reprovadas --")
     if not pecas_reprovadas:
         print("Nenhuma peça reprovada até o momento.")
     for peca in pecas_reprovadas:
         print(peca)
+        print("\n")
 # Retorna a lista de peças cadastradas, separando-as em aprovadas e reprovadas.
