@@ -116,3 +116,8 @@ Quantidade de caixas utilizadas: 1
 
 O enunciado do desafio proposto pela disciplina está em
 [`docs/Desafio.pdf`](docs/Desafio.pdf).
+
+## Documento da parte teórica do trabalho
+
+Descrição teórica
+[`docs/Algorítmos e Lógica de Programação - Parte Teórica.pdf`](docs/Algorítmos e Lógica de Programação - Parte Teórica.pdf).
